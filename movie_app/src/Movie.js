@@ -20,6 +20,10 @@ class Movie extends Component{
     }
 }
 
+function Movie({title, poster}){
+    
+}
+
 function MoviePoster({poster}){
     return(
         <img src={poster} alt="Movie Poster"/>
