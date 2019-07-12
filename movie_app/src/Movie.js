@@ -5,8 +5,8 @@ import './Movie.css';
 class Movie extends Component{
 
     static propTypes = {
-        title: PropTypes.string,
-        poster: PropTypes.string
+        title: PropTypes.string.isRequired,
+        poster: PropTypes.string.isRequired
     }
 
     render(){
@@ -20,12 +20,13 @@ class Movie extends Component{
     }
 }
 
-class MoviePoster extends Component{
-    render(){
-        return(
-            <img src={this.props.poster} />
-        );
-    }
+function MoviePoster({poster}){
+    return(
+        <img src={poster} alt="Movie Poster"/>
+    )
+}
+MoviePoster.propTypes = {
+    poster: PropTypes.string.isRequired
 }
 
 export default Movie;

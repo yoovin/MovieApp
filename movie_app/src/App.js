@@ -5,6 +5,11 @@ import Movie from './Movie'
 class App extends Component {
 
   state = {
+  }
+
+componentDidMount(){
+  setTimeout(() => {
+    this.setState({
     anis: [
       {
         title: "카구야 님은 고백받고 싶어",
@@ -21,24 +26,28 @@ class App extends Component {
       {
         title: "팝팀에픽",
         poster: "https://i.ytimg.com/vi/nPO_ZzoELKo/maxresdefault.jpg"
+      },
+      {
+        title:"사랑과 거짓말",
+        poster:"http://ani24suki.com/img/ani/3749.jpg"
       }
     ]
     
-  }
-
-componentDidMount(){
-  setTimeout(() => {
-    this.setState({
     })
   },3000)
+}
+
+_renderAnis = () => {
+  const anis = this.state.anis.map((ani, index) => {
+    return <Movie title={ani.title} poster={ani.poster} key={index} />
+   })
+   return anis
 }
 
   render(){
     return(
       <div className='App'>
-        {this.state.anis.map((ani, index) => {
-         return <Movie title={ani.title} poster={ani.poster} key={index} />
-        })}
+        {this.state.anis ? this._renderAnis() : 'Loading'}
       </div>
     )
   }
